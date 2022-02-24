@@ -27,8 +27,8 @@ export const updateDisplay = () => {
   displayTodos(todoArr);
 };
 
-export const saveTodos = (todo, date) => {
-  const todoObj = [todo, date];
+export const saveTodos = (todo, date, checked = false) => {
+  const todoObj = [todo, date, checked];
   const todosArray = JSON.parse(localStorage.getItem("todos")) || [];
 
   if (todosArray.length === 0) {
@@ -50,7 +50,7 @@ const createTodos = () => {
   const todoList = [];
   if (popSaveTodos.length !== 0) {
     popSaveTodos.forEach((item) => {
-      const todo = createElem("div", "todo");
+      const todo = createElem("div", item[2] ? "todo checked" : "todo");
       const todoContainer = createElem("div", "todo-container");
       const todoTitle = createElem("div", "title-text", item[0]);
       const date = createElem("div", "todo-date", item[1]);
@@ -96,6 +96,25 @@ const displayTodos = (todoArray) => {
       event.target.parentElement.className === "todo-check"
     ) {
       this.classList.toggle("checked");
+      const todos = JSON.parse(localStorage.getItem("todos"));
+      for (let i = 0; todos.length > i; i++) {
+        if (
+          todos[i][1] === this.firstElementChild.lastElementChild.textContent &&
+          this.className === "todo checked"
+        ) {
+          console.log(this.className);
+          todos[i][2] = true;
+
+          localStorage.setItem("todos", JSON.stringify(todos));
+        } else if (
+          todos[i][1] === this.firstElementChild.lastElementChild.textContent &&
+          this.className === "todo"
+        ) {
+          todos[i][2] = false;
+
+          localStorage.setItem("todos", JSON.stringify(todos));
+        }
+      }
     }
     //delete the clicked Todo item
     if (
