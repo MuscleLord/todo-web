@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!--Turn off error msg 404 for favicon in console-->
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="js/main.js"></script>
+    <title>TODO</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 id="titeln">Todo</h1>
+        <nav>
+          <form class="add_form" id="add_form">
+            <input
+              type="text"
+              id="todo_text"
+              class="todo_text"
+              maxlength="160"
+              placeholder="Att göra..."
+              autocomplete="off"
+            />
+            <button id="new_btn" class="new_btn">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </form>
+        </nav>
+        <div id="error_msg" class="error_msg"></div>
+      </header>
+      <main class="main" id="main">
+        <!-- todo -->
+      </main>
+    </div>
+  </body>
+</html>
