@@ -21,14 +21,14 @@ const deleteContents = (parentElement) => {
 };
 
 export const updateDisplay = () => {
-  console.log("Display updated");
+  //console.log("Display updated");
   clearDisplay();
   const todoArr = createTodos();
   displayTodos(todoArr);
 };
 
 export const saveTodos = (todo, date, checked = false) => {
-  const todoObj = [todo, date, checked];
+  const todoObj = [toProperCase(todo), toProperCase(date), checked];
   const todosArray = JSON.parse(localStorage.getItem("todos")) || [];
 
   if (todosArray.length === 0) {
@@ -45,15 +45,36 @@ const getSavedTodos = () => {
   return todos;
 };
 
+const toProperCase = (text) => {
+  const senteces = text.split(".");
+  let properText = "";
+  if (senteces.length > 1) {
+    properText = senteces.map((sentece) => {
+      return sentece.trim().charAt(0).toUpperCase() + sentece.trim().slice(1);
+    });
+    return properText.join(". ").trim();
+  } else {
+    properText = text.charAt(0).toUpperCase() + text.slice(1);
+    return properText.trim();
+  }
+};
+
 const createTodos = () => {
   const popSaveTodos = getSavedTodos() || [];
   const todoList = [];
   if (popSaveTodos.length !== 0) {
     popSaveTodos.forEach((item) => {
+      const idNumber = item[1].trim().slice(item[1].length - 7);
+      //console.log(idNumber);
       const todo = createElem("div", item[2] ? "todo checked" : "todo");
       const todoContainer = createElem("div", "todo-container");
       const todoTitle = createElem("div", "title-text", item[0]);
-      const date = createElem("div", "todo-date", item[1]);
+      const date = createElem(
+        "div",
+        "todo-date",
+        toProperCase(item[1].slice(0, item[1].length - 7))
+      );
+      const id = createElem("span", "idNum", idNumber);
       const todoInteract = createElem("div", "todo-buttons");
       const todoDel = createElem("div", "todo-delete");
       const todoCheck = createElem("div", "todo-check");
@@ -64,6 +85,7 @@ const createTodos = () => {
       todoInteract.appendChild(todoCheck);
       todoInteract.appendChild(todoDel);
       todoContainer.appendChild(todoTitle);
+      date.appendChild(id);
       todoContainer.appendChild(date);
       todo.appendChild(todoContainer);
       todo.appendChild(todoInteract);
@@ -122,6 +144,7 @@ const displayTodos = (todoArray) => {
       event.target.parentElement.className === "todo-delete"
     ) {
       const todos = JSON.parse(localStorage.getItem("todos"));
+      //console.log(this.firstElementChild.lastElementChild.textContent);
       for (let i = 0; todos.length > i; i++) {
         if (
           todos[i][1] === this.firstElementChild.lastElementChild.textContent

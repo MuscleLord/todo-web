@@ -4,6 +4,13 @@ const initApp = () => {
   const addTodo = document.getElementById("add_form");
   const errMsg = document.getElementById("error_msg");
   const input = document.getElementById("todo_text");
+  const clrAll = document.getElementById("titeln");
+
+  clrAll.addEventListener("click", (e) => {
+    localStorage.clear();
+    updateDisplay();
+  });
+
   addTodo.addEventListener("submit", () => {
     event.preventDefault();
     if (input.value.length > 0) {
@@ -17,15 +24,16 @@ const initApp = () => {
         minute: "numeric", // numeric, 2-digit
         second: "numeric"
       });
+      const formatted2 = formatted + ":" + date.getMilliseconds();
+
       errMsg.textContent = "";
-      saveTodos(input.value, formatted);
+      saveTodos(input.value, formatted2);
       input.value = "";
     } else {
       errMsg.textContent = "Måste skriva nått";
     }
     updateDisplay();
   });
-
   updateDisplay();
 };
 

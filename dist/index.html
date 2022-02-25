@@ -11,7 +11,10 @@
       href="img/favicons/apple-touch-icon.png"
       sizes="180x180"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -19,7 +22,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <!--Turn off error msg 404 for favicon in console-->
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="css/style.css" />
@@ -28,6 +36,9 @@
   </head>
   <body>
     <div class="container">
+      <div class="bgcircles1"></div>
+      <div class="bgcircles2"></div>
+      <!-- <div class="bgcircles3"></div> -->
       <header>
         <h1 id="titeln">Todo</h1>
         <nav>
@@ -47,6 +58,7 @@
         </nav>
         <div id="error_msg" class="error_msg"></div>
       </header>
+
       <main class="main" id="main">
         <!-- todo -->
       </main>

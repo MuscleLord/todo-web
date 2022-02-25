@@ -5,19 +5,58 @@
   box-sizing: border-box;
 }
 
+:root {
+  --eerie-black: rgba(25, 25, 27, 1);
+  --rose-pink: #fe53ba;
+  --aqua: #08f6fe;
+  --sea-green-crayola: rgba(9, 251, 211, 1);
+  --french-pink: #fc76a1;
+  --raisin-black: rgb(24, 24, 32);
+  --raisin-black-light: rgba(33, 33, 43, 1);
+  --raisin-mark: #272732;
+  --gray-x11: rgb(188, 188, 191);
+  --shamrock-green: #3aa165;
+  --indian-yellow: #e09e51;
+  --melon: #fea5a2;
+  --medium-orchid: #c143d8;
+  --add-grad: linear-gradient(225deg, #ffc979 0%, #d84aff 100%);
+  --rose-aqua-grad: linear-gradient(
+    135deg,
+    var(--rose-pink) 5%,
+    var(--aqua) 135%
+  );
+  --rose-aqua-grad1: linear-gradient(
+    225deg,
+    var(--rose-pink) 5%,
+    var(--aqua) 135%
+  );
+  --rose-aqua-grad2: linear-gradient(
+    135deg,
+    var(--rose-pink) 5%,
+    var(--aqua) 135%
+  );
+}
+
 html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #eee;
+  overflow: hidden;
 }
 
 body {
   width: 100%;
   height: 100vh;
-  background: #222;
+  background: var(--raisin-black);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 .container {
   display: flex;
@@ -26,16 +65,68 @@ body {
   width: 450px;
   min-height: 90vh;
   max-height: 90vh;
-  background: #333;
+  background: rgba(25, 25, 27, 0.4);
   border-radius: 10px;
-  border: 1px solid #444;
-  box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  box-shadow: 0 3px 15px 5px rgba(0, 0, 0, 0.1);
 }
+.container::-webkit-scrollbar {
+  display: none;
+}
+.bgcircles1 {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background: var(--rose-pink);
+  filter: blur(2.5rem);
+  opacity: 0.5;
+  z-index: -1;
+}
+.bgcircles2 {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: var(--aqua);
+  filter: blur(2.5rem);
+  opacity: 0.5;
+  z-index: -1;
+}
+.bgcircles3 {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: 15%;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  background: var(--sea-green-crayola);
+  filter: blur(2.5rem);
+  opacity: 0.5;
+  z-index: -1;
+}
+
 header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--rose-aqua-grad);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
 }
 nav {
   width: 100%;
@@ -72,6 +163,10 @@ nav .add_form {
   flex-direction: row;
   justify-content: space-between;
 }
+nav .add_form:focus-within {
+  border: 1px solid var(--rose-pink);
+  border-radius: 7px;
+}
 
 nav .add_form .todo_text {
   flex-grow: 1;
@@ -79,32 +174,38 @@ nav .add_form .todo_text {
   width: calc(100% - 52px);
   outline: none;
   height: 40px;
-  color: #222;
-  background-color: #bbb;
+  color: var(--gray-x11);
+  background: rgba(33, 33, 43, 0.3);
   padding-left: 5px;
   font-size: 1.2rem;
   border-radius: 6px 0 0 6px;
 }
+
+nav .add_form .todo_text:focus {
+  background: rgba(39, 39, 50, 0.7);
+}
+
 nav .add_form .todo_text::-webkit-input-placeholder {
-  color: rgba(24, 20, 20, 0.6);
+  color: rgba(203, 203, 209, 0.6);
 }
 nav .add_form .todo_text::-moz-placeholder {
-  color: rgba(24, 20, 20, 0.6);
+  color: rgba(203, 203, 209, 0.6);
 }
 nav .add_form .todo_text:-ms-input-placeholder {
-  color: rgba(24, 20, 20, 0.6);
+  color: rgba(203, 203, 209, 0.6);
 }
 nav .add_form .todo_text::-ms-input-placeholder {
-  color: rgba(24, 20, 20, 0.6);
+  color: rgba(203, 203, 209, 0.6);
 }
 nav .add_form .todo_text::placeholder {
-  color: rgba(24, 20, 20, 0.6);
+  color: rgba(203, 203, 209, 0.6);
 }
 nav .add_form .new_btn {
   border: none;
   padding: 5px;
   color: #ccc;
-  background-color: green;
+  background: var(--rose-aqua-grad);
+  /*  background-color: green; */
   border-radius: 0 6px 6px 0;
 }
 nav .add_form .new_btn:hover,
@@ -123,14 +224,14 @@ nav .add_form .new_btn i {
   flex-direction: row;
   max-width: 400px;
   justify-content: space-between;
-  background: #555;
-  margin-top: 2px;
+  margin-top: 8px;
+  background: var(--raisin-mark); /* #555; */
   border-radius: 6px;
   max-height: 44px;
 }
 
 .todo.checked {
-  background: #222;
+  background: var(--raisin-black-light);
 }
 .todo.checked .title-text,
 .todo.checked .todo-date {
@@ -144,9 +245,12 @@ nav .add_form .new_btn i {
 }
 
 .todo .todo-date {
-  font-size: 0.7rem;
-  color: #999;
+  font-size: 0.6rem;
+  color: var(--shamrock-green);
   padding: 5px 1px 2px 5px;
+}
+.todo .todo-date .idNum {
+  visibility: hidden;
 }
 .todo-buttons {
   display: flex;
@@ -159,11 +263,11 @@ nav .add_form .new_btn i {
 .title-text {
   max-width: 335px;
   min-width: 200px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   max-height: 25px;
   overflow: hidden;
   white-space: nowrap;
-  color: #ccc;
+  color: var(--gray-x11);
   font-weight: bold;
   padding: 5px 1px 2px 5px;
 }
@@ -181,9 +285,9 @@ nav .add_form .new_btn i {
   min-width: 200px;
   min-height: 44px;
   max-height: 100%;
-  color: #ccc;
-  background-color: #777;
-  padding: 5px;
+  color: var(--gray-x11);
+  background: var(--raisin-black);
+  padding: 10px;
   z-index: 1;
   border-radius: 6px;
 
@@ -205,17 +309,17 @@ nav .add_form .new_btn i {
 
 .todo.checked .todo-buttons .todo-check {
   color: #888;
-  background: rgb(43, 75, 13);
+  background: #282836;
 }
 .todo.checked .todo-buttons .todo-delete {
   color: #888;
-  background: rgb(114, 32, 12);
+  background: #352433;
 }
 .todo-check {
-  background: rgb(87, 151, 27);
+  background: #3f3f57; /* rgb(199, 100, 186); */
 }
 .todo-delete {
-  background: rgb(206, 59, 22);
+  background: #684865;
   border-radius: 0 6px 6px 0;
 }
 
@@ -230,9 +334,10 @@ nav .add_form .new_btn i {
 }
 
 .error_msg {
-  display: inline-block;
+  display: block;
   width: 90%;
-  color: red;
+  color: rgb(240, 62, 130);
+  padding-top: 5px;
 }
 @media screen and (max-width: 390px) {
   .main {
@@ -241,8 +346,28 @@ nav .add_form .new_btn i {
   .container {
     width: 360px;
   }
+  .bgcircles1 {
+    top: 1.5rem;
+    left: -3rem;
+    width: 15rem;
+    height: 15rem;
+  }
+  .bgcircles2 {
+    top: 45%;
+    left: 40%;
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .bgcircles3 {
+    top: 50%;
+    left: -5rem;
+    width: 20rem;
+    height: 20rem;
+  }
+
   .todo {
-    max-width: 360px;
+    max-width: 320px;
   }
   .todo-container {
     width: 260px;
