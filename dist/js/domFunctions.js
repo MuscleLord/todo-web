@@ -64,7 +64,10 @@ const createTodos = () => {
   const todoList = [];
   if (popSaveTodos.length !== 0) {
     popSaveTodos.forEach((item) => {
-      const idNumber = item[1].trim().slice(item[1].length - 7);
+      const idNumber =
+        item[1].length < 29
+          ? item[1].trim().slice(item[1].length - 6)
+          : item[1].trim().slice(item[1].length - 7);
       //console.log(idNumber);
       const todo = createElem("div", item[2] ? "todo checked" : "todo");
       const todoContainer = createElem("div", "todo-container");
@@ -72,7 +75,11 @@ const createTodos = () => {
       const date = createElem(
         "div",
         "todo-date",
-        toProperCase(item[1].slice(0, item[1].length - 7))
+        toProperCase(
+          item[1].length < 29
+            ? item[1].slice(0, item[1].length - 6)
+            : item[1].slice(0, item[1].length - 7)
+        )
       );
       const id = createElem("span", "idNum", idNumber);
       const todoInteract = createElem("div", "todo-buttons");
