@@ -228,12 +228,13 @@ nav .add_form .new_btn i {
   background: var(--raisin-mark); /* #555; */
   border-radius: 6px;
   max-height: 44px;
-  transition: 0.5s;
+  transition: all 0.5s ease-in;
 }
 
 .todo.checked {
   background: var(--raisin-black-light);
-  transition: 0.5s;
+  opacity: 0.3;
+  transition: all 0.5s ease;
 }
 .todo.checked .title-text,
 .todo.checked .todo-date {
@@ -277,8 +278,12 @@ nav .add_form .new_btn i {
 .title-text.larger {
   font-size: 0.8rem;
 }
+.todo.tooltip {
+  opacity: 1;
+}
 .todo.todo.tooltip .todo-container {
-  transition: 0.3s;
+  
+  transition: all 0.3s ease;
 }
 
 .todo.tooltip .todo-container .title-text {
@@ -286,6 +291,7 @@ nav .add_form .new_btn i {
   position: relative;
   overflow: visible;
   white-space: normal;
+  
   max-width: 340px;
   min-width: 200px;
   min-height: 44px;
@@ -295,7 +301,7 @@ nav .add_form .new_btn i {
   padding: 10px;
   z-index: 1;
   border-radius: 6px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
 }
 .todo-check,
@@ -315,21 +321,21 @@ nav .add_form .new_btn i {
 .todo.checked .todo-buttons .todo-check {
   color: #888;
   background: #282836;
-  transition: 0.5s;
+  transition: all 0.5s ease;
 }
 .todo.checked .todo-buttons .todo-delete {
   color: #888;
   background: #352433;
-  transition: 0.5s;
+  transition: all 0.5s ease;
 }
 .todo-check {
   background: #3f3f57; /* rgb(199, 100, 186); */
-  transition: 0.5s;
+  transition: all 0.5s ease;
 }
 .todo-delete {
   background: #684865;
   border-radius: 0 6px 6px 0;
-  transition: 0.5s;
+  transition: all 0.5s ease;
 }
 
 .show-pointer {
@@ -352,7 +358,7 @@ nav .add_form .new_btn i {
   .main {
     min-height: 500px;
   }
-  .container {
+  .container {S
     width: 360px;
   }
   .bgcircles1 {

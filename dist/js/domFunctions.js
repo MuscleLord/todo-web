@@ -131,7 +131,7 @@ const displayTodos = (todoArray) => {
           todos[i][1] === this.firstElementChild.lastElementChild.textContent &&
           this.className === "todo checked"
         ) {
-          console.log(this.className);
+          //console.log(this.className);
           todos[i][2] = true;
 
           localStorage.setItem("todos", JSON.stringify(todos));
@@ -151,19 +151,14 @@ const displayTodos = (todoArray) => {
       event.target.parentElement.className === "todo-delete"
     ) {
       const todos = JSON.parse(localStorage.getItem("todos"));
-      //console.log(this.firstElementChild.lastElementChild.textContent);
+
+      //if (todos.contains(this.firstElementChild.lastElementChild.textContent))
       for (let i = 0; todos.length > i; i++) {
         if (
           todos[i][1] === this.firstElementChild.lastElementChild.textContent
         ) {
-          todos[i] = null;
-          const newArr = [];
-          todos.forEach((item) => {
-            if (item) {
-              newArr.push(item);
-            }
-          });
-          localStorage.setItem("todos", JSON.stringify(newArr));
+          todos.splice(i, 1);
+          localStorage.setItem("todos", JSON.stringify(todos));
         }
       }
       ccContainer.removeChild(this);
