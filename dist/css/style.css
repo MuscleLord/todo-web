@@ -282,7 +282,6 @@ nav .add_form .new_btn i {
   opacity: 1;
 }
 .todo.todo.tooltip .todo-container {
-  
   transition: all 0.3s ease;
 }
 
@@ -291,7 +290,7 @@ nav .add_form .new_btn i {
   position: relative;
   overflow: visible;
   white-space: normal;
-  
+
   max-width: 340px;
   min-width: 200px;
   min-height: 44px;
@@ -358,7 +357,7 @@ nav .add_form .new_btn i {
   .main {
     min-height: 500px;
   }
-  .container {S
+  .container {
     width: 360px;
   }
   .bgcircles1 {
