@@ -151,17 +151,20 @@ const displayTodos = (todoArray) => {
       event.target.parentElement.className === "todo-delete"
     ) {
       const todos = JSON.parse(localStorage.getItem("todos"));
-
+      this.classList.add("fall");
       //if (todos.contains(this.firstElementChild.lastElementChild.textContent))
-      for (let i = 0; todos.length > i; i++) {
-        if (
-          todos[i][1] === this.firstElementChild.lastElementChild.textContent
-        ) {
-          todos.splice(i, 1);
-          localStorage.setItem("todos", JSON.stringify(todos));
+      this.addEventListener("transitionend", () => {
+        for (let i = 0; todos.length > i; i++) {
+          if (
+            todos[i][1] === this.firstElementChild.lastElementChild.textContent
+          ) {
+            todos.splice(i, 1);
+            localStorage.setItem("todos", JSON.stringify(todos));
+            //console.log(this);
+            ccContainer.removeChild(this);
+          }
         }
-      }
-      ccContainer.removeChild(this);
+      });
     }
   }
 

@@ -347,6 +347,11 @@ nav .add_form .new_btn i {
   color: #fff;
 }
 
+.todo.fall {
+  transform: translateY(8rem) rotateZ(30deg);
+  opacity: 0;
+}
+
 .error_msg {
   display: block;
   width: 90%;
